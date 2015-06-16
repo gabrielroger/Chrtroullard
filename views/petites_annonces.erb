@@ -1,0 +1,10 @@
+<section>
+	<h3>Les petites annonces : </h3>
+	<% @articles.each do |id, article| %>
+    <% if article["rubrique"]=="annonces" %>
+            <section>
+                <h2><%=article["titre_article"]%></h2>
+                <p><%=article["article"]%></p>
+            </section>
+    <% end %><% end %>
+</section>

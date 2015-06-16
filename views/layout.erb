@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="chartroullard.css" />
+        <title>Le Chartroullard !</title>
+    </head>
+    <body id="block_page">
+    	<div>
+    		<header>
+    			<h1>Le Chartroullard</h1>
+    			<h2>Le site de l'info à la Chartroulle !</h2>
+    		     <nav>
+                    <ul>
+                        <li><a href="/">Page d'acceuil</a></li>
+                        <li><a href="/propositions_articles">Rédiger un article</a></li>
+                        <li><a href="/presentation_chartroulle">La Chartroulle, qu'est-ce que c'est ?</a></li>
+                        <li><a href="/archives">Anciens articles</a></li>
+                        <li><a href="/petites_annonces">Petites annonces</a></li>
+                    </ul>
+                </nav>
+            </header>
+        <%= yield %>
+        <footer>
+            <p class="cmail">Me contacter (Pour ceux qui ne viennent pas régulièrement à la Chartroulle ou pour les requêtes urgentes) : lechartroullard@gmail.com</p>
+            <p class="mmail">Pour contacter le rédacteur en chef/directeur/responsable/programmeur/gérant : gabrielroger.chartroulle@gmail.com</p>
+        </footer>
+  </body>
+</html>
