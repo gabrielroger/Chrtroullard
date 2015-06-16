@@ -1,2 +1,2 @@
-require './suffragist'
-run Sinatra::chartroullard
+require './chartroullard'
+run Sinatra::Application
