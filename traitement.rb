@@ -17,15 +17,15 @@ get "/presentation_chartroulle" do
 	erb :presentation_chartroulle
 end
 
-get "/archives" do
-	erb :archives
-end
-
 get "/petites_annonces" do
 @store = YAML::Store.new 'articles.yml'
 @articles = @store.transaction { @store['articles'] }
 @articles ||=[]
 erb :petites_annonces
+end
+
+get "/archives" do
+	erb :archives
 end
 
 post "/traitement" do
