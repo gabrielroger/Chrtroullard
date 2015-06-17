@@ -10,3 +10,12 @@ articles:
       en programmation et l''a aidé à créer ce site . Nous le remercions donc tout
       particulièrement ainsi que tous les employés de Livementor.  '
     rubrique: articles
+  2:
+    titre_article: Disparitions d'articles
+    article: 'Il a été constaté que certains articles disparaissaient du site à intervalles 
+      réguliers. La directions s'excuse de ce problème et vous assure qu'elle 
+      tentera de régler ce problème le plus tôt possible . Notre programmeur 
+      actuel dit ne pas encore avoir les compétences pour régler ce problème 
+      mais qu'il suivra une formation intensive le 17/06 afin de régler ce genre 
+      de problème .  '
+    rubrique: annonces
