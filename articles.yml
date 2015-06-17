@@ -19,3 +19,10 @@ articles:
       mais qu''il suivra une formation intensive le 17/06 afin de régler ce genre 
       de problème .  '
     rubrique: annonces
+  3:
+    titre_article: Rédaction d''articles
+    article: 'Merci, si vous voulez rédiger un article, de me l''envoyer par mail au lieu de le rédiger ici, mais en mettant 
+      toutes les informations nécéssaires (titre, article et rubrique) . Ce service sera remis à votre disposition dès 
+      que possible . Pour plus de précisions, merci d''aller voir l''article à ce sujet dans la rubrique""petites 
+      annonces"". Merci !  '
+    rubrique: articles
