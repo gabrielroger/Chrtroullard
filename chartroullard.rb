@@ -1,13 +1,14 @@
 require 'sinatra'
 require 'sqlite3'
+require 'sequel'
 set :bind, "0.0.0.0"
 
+
+DB = Sequel.connect('sqlite://chartroullard.db')
+
+
 get "/" do
-db = SQLite3::Database.new 'chartroullard.db'
-db.results_as_hash=true
-@articles = db.execute( "select titre, article from articles where rubrique='articles'" )
-p @articles
-@articles ||=[]
+@articles = DB[ "select titre, article from articles where rubrique='articles'" ]
 erb :index
 end
 
@@ -20,10 +21,7 @@ get "/presentation_chartroulle" do
 end
 
 get "/petites_annonces" do
-db = SQLite3::Database.new 'chartroullard.db'
-db.results_as_hash=true
-@articles =  db.execute( "select titre, article from articles where rubrique='annonces'" )
-@articles ||=[]
+@articles =  DB[ "select titre, article from articles where rubrique='annonces'" ]
 erb :petites_annonces
 end
 
@@ -32,9 +30,6 @@ get "/archives" do
 end
 
 post "/traitement" do
-   p params
-    db = SQLite3::Database.new 'chartroullard.db'
-    db.execute("INSERT INTO articles (titre, article, rubrique)
-              VALUES ( ?, ?, ?)", [params["titre_article"], params["article"], params["rubrique"]])
+    DB[:articles].insert([:titre, :article, :rubrique], [params["titre_article"], params["article"], params["rubrique"]])
     erb :reponse
 end

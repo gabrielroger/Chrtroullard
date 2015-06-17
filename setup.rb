@@ -1,12 +1,11 @@
 require "sqlite3"
+require "sequel"
 
-db = SQLite3::Database.new "chartroullard.db"
+DB = Sequel.connect('sqlite://chartroullard.db')
 
-rows = db.execute <<-SQL
-  create table articles (
-    id integer primary key,
-    titre varchar(100),
-    article text,
-    rubrique int
-  );
-SQL
+DB.create_table :articles do
+  primary_key :id
+  String :titre
+  String :article, :text => true
+  String :rubrique
+end

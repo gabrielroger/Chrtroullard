@@ -6,8 +6,8 @@
     		</section>
              <% @articles.each do |article| %>
              <section>
-                <h2><%=article["titre"]%></h2>
-                <p><%=article["article"]%></p>
+                <h2><%=article[:titre]%></h2>
+                <p><%=article[:article]%></p>
                 </section>
                 <% end %>
             <aside>
@@ -16,7 +16,7 @@
     					<li>Le site du Chartroullard</li>
             <% @articles.each do |article| 
                 %>
-               <li><%=article["titre"]%></li>
+               <li><%=article[:titre]%></li>
                   <% end %>
     			</ul></p>
     		</aside>

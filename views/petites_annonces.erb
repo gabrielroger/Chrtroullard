@@ -2,8 +2,8 @@
 	<h3>Les petites annonces : </h3>
 	<% @articles.each do |article| %>
             <section>
-                <h2><%=article["titre"]%></h2>
-                <p><%=article["article"]%></p>
+                <h2><%=article[:titre]%></h2>
+                <p><%=article[:article]%></p>
             </section>
     <% end %>
 </section>
