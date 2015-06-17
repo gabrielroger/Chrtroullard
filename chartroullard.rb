@@ -2,6 +2,19 @@ require 'sinatra'
 require 'sequel'
 set :bind, "0.0.0.0"
 
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['ID'], ENV['MDP']]
+  end
+end
+
 if ENV["RACK_ENV"] == "production"
   DB = Sequel.connect(ENV["DATABASE_URL"])
 else 
@@ -15,6 +28,7 @@ erb :index
 end
 
 get "/propositions_articles" do
+  protected!
 erb :propositions_articles
 end
 
