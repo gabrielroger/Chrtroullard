@@ -1,0 +1,14 @@
+<% @footer = false%>
+<h3>Page réservée à la direction !</h3>
+<% @articles.each do |article| %>
+    <section>
+        <h2><%=article[:titre]%></h2>
+        <p><%=article[:article]%></p>
+        <p>
+        	<form method="post" action="suppression">
+               <input type="hidden" value="<%=article[:id]%>" name="suppression"/>
+               <input type="submit" value="suppression"/>
+            </form>
+        </p>
+    </section>
+<% end %>

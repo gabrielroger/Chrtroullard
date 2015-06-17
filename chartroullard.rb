@@ -28,7 +28,6 @@ erb :index
 end
 
 get "/propositions_articles" do
-  protected!
 erb :propositions_articles
 end
 
@@ -45,7 +44,20 @@ get "/archives" do
 	erb :archives
 end
 
+get "/page_direction" do
+  protected!
+  @articles = DB[ "select id, titre, article from articles" ]
+  erb :page_direction
+end
+
 post "/traitement" do
+  protected!
     DB[:articles].insert([:titre, :article, :rubrique], [params["titre_article"], params["article"], params["rubrique"]])
     erb :reponse
+end
+
+post "/suppression" do
+   protected!
+   DB[:articles].filter({:id => params["suppression"]}).delete
+   redirect to "/page_direction"
 end
