@@ -1,10 +1,12 @@
 require 'sinatra'
-require 'yaml/store'
+require 'sqlite3'
 set :bind, "0.0.0.0"
 
 get "/" do
-@store = YAML::Store.new 'articles.yml'
-@articles = @store.transaction { @store['articles'] }
+db = SQLite3::Database.new 'chartroullard.db'
+db.results_as_hash=true
+@articles = db.execute( "select titre, article from articles where rubrique='articles'" )
+p @articles
 @articles ||=[]
 erb :index
 end
@@ -18,8 +20,9 @@ get "/presentation_chartroulle" do
 end
 
 get "/petites_annonces" do
-@store = YAML::Store.new 'articles.yml'
-@articles = @store.transaction { @store['articles'] }
+db = SQLite3::Database.new 'chartroullard.db'
+db.results_as_hash=true
+@articles =  db.execute( "select titre, article from articles where rubrique='annonces'" )
 @articles ||=[]
 erb :petites_annonces
 end
@@ -30,11 +33,8 @@ end
 
 post "/traitement" do
    p params
-    @store = YAML::Store.new 'articles.yml'
-  @store.transaction do
-    @store['articles'] ||= {}
-    id=@store['articles'].size+1
-    @store['articles'][id] =params
-  end
+    db = SQLite3::Database.new 'chartroullard.db'
+    db.execute("INSERT INTO articles (titre, article, rubrique)
+              VALUES ( ?, ?, ?)", [params["titre_article"], params["article"], params["rubrique"]])
     erb :reponse
 end

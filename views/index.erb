@@ -4,21 +4,19 @@
     			<h2>Le site du Chartroullard</h2>
     			<p>Le Chartroullard, hebdomadaire de la Chartroulle, est maintenant disponible sur vos écrans ! Il sera mis à jour tous les mois par notre rédacteur en chef, responsable, programmeur, gérant, directeur et de temps en temps photographe Gabriel Roger ! N'hésitez pas à lui donner vos propositions, idées, sujets, articles ! </p>
     		</section>
-             <% @articles.each do |id, article| %>
-             <% if article["rubrique"]=="articles" %>
+             <% @articles.each do |article| %>
              <section>
-                <h2><%=article["titre_article"]%></h2>
+                <h2><%=article["titre"]%></h2>
                 <p><%=article["article"]%></p>
                 </section>
-                <% end %><% end %>
+                <% end %>
             <aside>
     			<h3>Les articles actuels : </h3>
     				<p><ul>
     					<li>Le site du Chartroullard</li>
-            <% @articles.each do |id, article| 
+            <% @articles.each do |article| 
                 %>
-                <%if article["rubrique"]=="articles" %>
-               <li><%=article["titre_article"]%></li>
-                  <% end %><% end %>
+               <li><%=article["titre"]%></li>
+                  <% end %>
     			</ul></p>
     		</aside>
