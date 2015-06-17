@@ -1,11 +1,11 @@
 require 'sinatra'
-require 'sqlite3'
 require 'sequel'
 set :bind, "0.0.0.0"
 
 if ENV["RACK_ENV"] == "production"
   DB = Sequel.connect(ENV["DATABASE_URL"])
 else 
+  require 'sqlite3'
   DB = Sequel.connect('sqlite://chartroullard.db')
 end
 
