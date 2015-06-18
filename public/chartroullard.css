@@ -94,5 +94,6 @@ aside
     display:inline-block;
     position: fixed;
     right: 0px;
-    bottom: 50px;
+    bottom: 0px;
+    border: 3px solid black;
 }
