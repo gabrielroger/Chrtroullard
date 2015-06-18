@@ -50,6 +50,10 @@ get "/page_direction" do
   erb :page_direction
 end
 
+get "/sondage" do
+  erb :sondages
+end
+
 post "/traitement" do
     DB[:articles].insert([:titre, :article, :rubrique, :auteur], [params["titre_article"], params["article"], params["rubrique"], params["auteur"]])
     erb :reponse
