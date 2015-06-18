@@ -7,10 +7,6 @@ else
   DB = Sequel.connect('sqlite://chartroullard.db')
 end
 
-DB.create_table :articles do
-  primary_key :id
-  String :titre
-  String :article, :text => true
-  String :rubrique
-  String :auteur
+DB.alter_table(:articles) do
+  add_column :auteur, String
 end
