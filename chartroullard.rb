@@ -23,7 +23,7 @@ else
 end
 
 get "/" do
-@articles = DB[ "select titre, article from articles where rubrique='articles'" ]
+@articles = DB[ "select titre, article, auteur from articles where rubrique='articles'" ]
 erb :index
 end
 
