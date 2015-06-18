@@ -6,7 +6,7 @@ helpers do
   def protected!
     return if authorized?
     headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-    halt 401, "Not authorized ======>   <a href=\"/\">Page d'acceuil</a>\n"
+    halt 401, "Non autorisé ======>   <a href=\"/\">Page d'acceuil</a>\n"
   end
 
   def authorized?
