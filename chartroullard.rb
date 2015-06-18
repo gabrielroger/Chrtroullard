@@ -45,13 +45,11 @@ get "/archives" do
 end
 
 get "/page_direction" do
-  protected!
   @articles = DB[ "select id, titre, article from articles" ]
   erb :page_direction
 end
 
 post "/traitement" do
-  protected!
     DB[:articles].insert([:titre, :article, :rubrique], [params["titre_article"], params["article"], params["rubrique"]])
     erb :reponse
 end
