@@ -1,4 +1,8 @@
 <section>
 	<h3>Les anciens articles (archives)</h3>
-	<p>Il n'y a pas d'articles ici pour le moment ! Revenez plus tard !</p>
+	<% @articles.each do |article| %>
+        <h2><%=article[:titre]%></h2>
+        <p><%=article[:article]%></p>
+        <p><%=article[:auteur]%></p>
+      <% end %>
 </section>

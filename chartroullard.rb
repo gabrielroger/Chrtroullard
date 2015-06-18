@@ -36,21 +36,22 @@ get "/presentation_chartroulle" do
 end
 
 get "/petites_annonces" do
-@articles =  DB[ "select titre, article from articles where rubrique='annonces'" ]
+@articles =  DB[ "select titre, article, auteur from articles where rubrique='annonces'" ]
 erb :petites_annonces
 end
 
 get "/archives" do
-	erb :archives
+	 @articles = DB[ "select titre, article, auteur from articles where rubrique='archives'" ]
+  erb :archives
 end
 
 get "/page_direction" do
-  @articles = DB[ "select id, titre, article from articles" ]
+  @articles = DB[ "select * from articles" ]
   erb :page_direction
 end
 
 post "/traitement" do
-    DB[:articles].insert([:titre, :article, :rubrique], [params["titre_article"], params["article"], params["rubrique"]])
+    DB[:articles].insert([:titre, :article, :rubrique, :auteur], [params["titre_article"], params["article"], params["rubrique"], params["auteur"]])
     erb :reponse
 end
 
@@ -59,3 +60,10 @@ post "/suppression" do
    DB[:articles].filter({:id => params["suppression"]}).delete
    redirect to "/page_direction"
 end
+
+post "/archive" do
+   protected!
+   DB[:articles].filter({:id => params["archive"]}).update({:rubrique =>'archives'})
+   redirect to "/page_direction"
+end
+

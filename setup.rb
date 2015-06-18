@@ -12,4 +12,5 @@ DB.create_table :articles do
   String :titre
   String :article, :text => true
   String :rubrique
+  String :auteur
 end
