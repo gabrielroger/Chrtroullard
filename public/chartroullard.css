@@ -92,7 +92,7 @@ aside
 {
     width: 30%;
     display:inline-block;
-    position: absolute;
+    position: fixed;
     right: 0px;
     bottom: 50px;
 }
