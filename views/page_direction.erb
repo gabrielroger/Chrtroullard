@@ -9,10 +9,12 @@
                <input type="hidden" value="<%=article[:id]%>" name="suppression"/>
                <input type="submit" value="suppression"/>
             </form>
+          <% if article[:rubrique]=="articles" or article[:rubrique]=="annonces" %>
             <form method="post" action="archive">
                <input type="hidden" value="<%=article[:id]%>" name="archive"/>
                <input type="submit" value="archives"/>
             </form>
+          <% end %>
         </p>
     </section>
 <% end %>
