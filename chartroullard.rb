@@ -41,7 +41,7 @@ erb :petites_annonces
 end
 
 get "/archives" do
-	 @articles = DB[ "select titre, article, auteur from articles where rubrique='archives'" ]
+	 @articles = DB[ "select * from articles where rubrique='archives'" ]
   erb :archives
 end
 
